@@ -1,4 +1,4 @@
-package com.example.dreamhomefurniturecompose.ui.theme
+package com.dreamhomefurniturecompose.ui.theme
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle

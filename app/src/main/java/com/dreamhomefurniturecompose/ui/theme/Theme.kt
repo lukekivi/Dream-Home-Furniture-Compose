@@ -1,4 +1,4 @@
-package com.example.dreamhomefurniturecompose.ui.theme
+package com.dreamhomefurniturecompose.ui.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme
