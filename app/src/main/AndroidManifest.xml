@@ -3,6 +3,7 @@
     package="com.example.dreamhomefurniturecompose">
 
     <application
+        android:name="com.dreamhomefurniturecompose.DreamHomeFurnitureComposeApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -10,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DreamHomeFurnitureCompose">
         <activity
-            android:name=".MainActivity"
+            android:name="com.dreamhomefurniturecompose.MainActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.DreamHomeFurnitureCompose">
