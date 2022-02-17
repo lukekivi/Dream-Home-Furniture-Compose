@@ -1,4 +1,4 @@
-package com.example.dreamhomefurniturecompose.viewmodels
+package com.dreamhomefurniturecompose.viewmodels
 
 import androidx.annotation.StringRes
 import androidx.lifecycle.ViewModel
@@ -6,6 +6,7 @@ import com.example.dreamhomefurniturecompose.R
 import com.dreamhomefurniturecompose.data.FurnitureRepo
 import com.dreamhomefurniturecompose.data.FurnitureResponse
 import com.dreamhomefurniturecompose.network.FurnitureData
+import com.dreamhomefurniturecompose.ui.components.FurnitureCardData
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -59,7 +60,7 @@ class MainScreenViewModelImpl @Inject constructor(
                     FurnitureDataState.Empty
                 } else {
                     FurnitureDataState.Success(
-                        simpleFurnitureDataList = filteredData.map { it.toSimpleFurnitureData() }
+                        simpleFurnitureDataList = filteredData.map { it.toFurnitureCardData() }
                     )
                 }
             }
@@ -96,10 +97,10 @@ class MainScreenViewModelImpl @Inject constructor(
     }
 
 
-    private fun FurnitureData.toSimpleFurnitureData() = SimpleFurnitureData(
+    private fun FurnitureData.toFurnitureCardData() = FurnitureCardData(
         title = this.title,
-        price = this.price,
-        vendorName = this.vendorName,
+        price = this.price.toString(),
+        vendorTitle = this.vendorName,
         collection = this.collection,
         imageUrl = this.media.firstOrNull()?.url
     )
@@ -136,14 +137,6 @@ data class MainScreenContent(
 sealed class FurnitureDataState {
     object Uninitialized: FurnitureDataState()
     object Empty: FurnitureDataState()
-    class Success(val simpleFurnitureDataList: List<SimpleFurnitureData>): FurnitureDataState()
+    class Success(val simpleFurnitureDataList: List<FurnitureCardData>): FurnitureDataState()
     class Error(val message: String): FurnitureDataState()
 }
-
-data class SimpleFurnitureData(
-    val title: String,
-    val price: Double,
-    val vendorName: String,
-    val collection: String,
-    val imageUrl: String?
-)

@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">DreamHomeFurnitureCompose</string>
+
+    <string name="filter_item_beds">Beds</string>
+    <string name="filter_item_bedding_accessories">Bedding Accessories</string>
+    <string name="filter_item_benches">Benches</string>
+    <string name="filter_item_chests">Chests</string>
+    <string name="filter_item_desks">Desks</string>
+    <string name="filter_item_dressers">Dressers</string>
+    <string name="filter_item_nightstands">Nightstands</string>
+    <string name="filter_item_vanity_tables">Vanity Tables</string>
+
+    <string name="furniture_card_price_title">Our Price</string>
+    <string name="furniture_card_compare_button">COMPARE</string>
 </resources>

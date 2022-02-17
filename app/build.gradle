@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    compileSdk 30
+    compileSdk 31
 
     defaultConfig {
         applicationId "com.example.dreamhomefurniturecompose"
@@ -68,4 +68,7 @@ dependencies {
 
     // Coroutines for asynchronous operations
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.0"
+
+    // Coil image loading api
+    implementation "io.coil-kt:coil-compose:1.4.0"
 }
