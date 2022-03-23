@@ -29,7 +29,7 @@ class FurnitureNetworkServiceImpl @Inject constructor() : FurnitureNetworkServic
                     type = "Sectionals",
                     media = listOf(
                         MediaData(
-                            url = "https://ashleyfurniture.scene7.com/is/image/AshleyFurniture/10104-88-77-94-T327?\$AFHS-PDP-Main\$",
+                            url = "https://ashleyfurniture.scene7.com/is/image/AshleyFurniture/10104-88-77-94-T327?AFHS-PDP-Main",
                             width = 175,
                             length = 200
                         )

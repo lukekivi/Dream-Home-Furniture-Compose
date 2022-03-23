@@ -72,7 +72,7 @@ class MainScreenViewModelImpl @Inject constructor(
         MainScreenContent(
             isLoading = isLoading,
             filterItemList = filterItemList,
-            furnitureDataResponse = furnitureDataState
+            furnitureDataState = furnitureDataState
         )
     }
 
@@ -131,7 +131,7 @@ data class FilterItem(
 data class MainScreenContent(
     val isLoading: Boolean,
     val filterItemList: List<FilterItem>,
-    val furnitureDataResponse: FurnitureDataState
+    val furnitureDataState: FurnitureDataState
 )
 
 sealed class FurnitureDataState {
