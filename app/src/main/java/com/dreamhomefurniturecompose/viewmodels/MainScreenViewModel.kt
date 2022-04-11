@@ -60,7 +60,7 @@ class MainScreenViewModelImpl @Inject constructor(
                     FurnitureDataState.Empty
                 } else {
                     FurnitureDataState.Success(
-                        simpleFurnitureDataList = filteredData.map { it.toFurnitureCardData() }
+                        furnitureCardDataList = filteredData.map { it.toFurnitureCardData() }
                     )
                 }
             }
@@ -137,6 +137,6 @@ data class MainScreenContent(
 sealed class FurnitureDataState {
     object Uninitialized: FurnitureDataState()
     object Empty: FurnitureDataState()
-    class Success(val simpleFurnitureDataList: List<FurnitureCardData>): FurnitureDataState()
+    class Success(val furnitureCardDataList: List<FurnitureCardData>): FurnitureDataState()
     class Error(val message: String): FurnitureDataState()
 }
