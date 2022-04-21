@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -31,15 +32,18 @@ fun MainScreen(
         verticalArrangement = Arrangement.Top,
         modifier = Modifier.fillMaxSize()
     ) {
-        /**
-         * Handle each data state differently
-         */
         when (val furnitureDataState = mainScreenContent.furnitureDataState) {
             is FurnitureDataState.Success -> {
-                MainScreenFurnitureList(furnitureCardDataList = furnitureDataState.furnitureCardDataList)
+                MainScreenFurnitureList(
+                    furnitureCardDataList = furnitureDataState.furnitureCardDataList
+                ) {
+                    Log.d("MainScreen", "${furnitureDataState.furnitureCardDataList[it].title} was clicked!")
+                }
             }
             else -> {
-                // do something with other states
+                /**
+                 * do something with other states
+                 */
             }
         }
     }
@@ -48,16 +52,14 @@ fun MainScreen(
 
 @Composable
 fun MainScreenFurnitureList(
-    furnitureCardDataList: List<FurnitureCardData>
+    furnitureCardDataList: List<FurnitureCardData>,
+    onCompare: (Int) -> Unit
 ) {
-    /**
-     * If there is data in simpleFurnitureDataList, display it in the form of a scrollable list
-     */
     LazyColumn(horizontalAlignment = Alignment.CenterHorizontally) {
-        items(furnitureCardDataList) { furnitureCardData ->
+        itemsIndexed(furnitureCardDataList) { index, furnitureCardData ->
             FurnitureCard(
                 data = furnitureCardData,
-                setCompare = { Log.d("CompareButton", "${furnitureCardData.title} was clicked") },
+                setCompare = { onCompare(index) },
                 modifier = Modifier.padding(8.dp)
             )
         }
