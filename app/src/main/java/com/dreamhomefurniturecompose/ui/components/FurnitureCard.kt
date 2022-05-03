@@ -3,6 +3,7 @@ package com.dreamhomefurniturecompose.ui.components
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
@@ -26,11 +27,13 @@ import com.example.dreamhomefurniturecompose.R
 fun FurnitureCard(
     data: FurnitureCardData,
     setCompare: () -> Unit,
+    onClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     Row(
         modifier = modifier
             .fillMaxWidth()
+            .clickable { onClick() }
             .height(210.dp)
             .border(
                 width = .5.dp,
@@ -139,6 +142,7 @@ private fun FurnitureCardPreview() {
             collection = "Mccade Cobblestone Collection",
             imageUrl = "https://cdn.theclassyhome.com/600x600/ASH-10104-88-77-94-SW.jpg"
         ),
-        setCompare = {}
+        setCompare = {},
+        onClick = {}
     )
 }

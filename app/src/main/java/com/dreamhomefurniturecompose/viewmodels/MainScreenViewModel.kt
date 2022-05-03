@@ -7,6 +7,9 @@ import com.dreamhomefurniturecompose.data.FurnitureRepo
 import com.dreamhomefurniturecompose.data.FurnitureResponse
 import com.dreamhomefurniturecompose.network.FurnitureData
 import com.dreamhomefurniturecompose.ui.components.FurnitureCardData
+import com.dreamhomefurniturecompose.ui.screens.FilterItem
+import com.dreamhomefurniturecompose.ui.screens.FurnitureDataState
+import com.dreamhomefurniturecompose.ui.screens.MainScreenContent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -121,22 +124,4 @@ enum class FilterOptions(
     Dressers(R.string.filter_item_dressers,"Dressers"),
     Nightstands(R.string.filter_item_nightstands, "Nightstands"),
     VanityTables(R.string.filter_item_vanity_tables, "Vanity Tables")
-}
-
-data class FilterItem(
-    val filter: FilterOptions,
-    val isSelected: Boolean = false
-)
-
-data class MainScreenContent(
-    val isLoading: Boolean,
-    val filterItemList: List<FilterItem>,
-    val furnitureDataState: FurnitureDataState
-)
-
-sealed class FurnitureDataState {
-    object Uninitialized: FurnitureDataState()
-    object Empty: FurnitureDataState()
-    class Success(val furnitureCardDataList: List<FurnitureCardData>): FurnitureDataState()
-    class Error(val message: String): FurnitureDataState()
 }
