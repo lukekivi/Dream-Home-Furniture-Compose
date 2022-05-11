@@ -103,7 +103,7 @@ class MainScreenViewModelImpl @Inject constructor(
     private fun FurnitureData.toFurnitureCardData() = FurnitureCardData(
         title = this.title,
         price = "$${this.price}",
-        vendorTitle = this.vendorName,
+        vendorTitle = this.productSpecifications.brandName,
         collection = this.collection,
         imageUrl = this.media.firstOrNull()?.url
     )
