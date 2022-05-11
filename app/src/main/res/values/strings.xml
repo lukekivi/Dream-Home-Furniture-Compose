@@ -16,9 +16,10 @@
     <string name="furniture_card_compare_button">COMPARE</string>
 
     <!-- detail screen -->
-    <string name="add_to_cart_button">Add to Cart</string>
+    <string name="add_to_cart_button">ADD TO CART</string>
     <string name="overview_title">Overview</string>
     <string name="features_title">Features</string>
+    <string name="specs_title">Specs</string>
 
     <!-- specification categories -->
     <string name="brand_name">Brand Name</string>
@@ -37,5 +38,4 @@
     <string name="unit_depth_in">Unit Depth (in)</string>
     <string name="unit_height_in">Unit Height (in)</string>
     <string name="unit_width_in">Unit Width (in)</string>
-    <string name="specs_title">Specs</string>
 </resources>

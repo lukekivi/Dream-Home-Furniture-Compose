@@ -1,8 +1,13 @@
 package com.dreamhomefurniturecompose.ui.theme
 
 import androidx.compose.ui.graphics.Color
+import javax.annotation.concurrent.Immutable
 
-val Purple200 = Color(0xFFBB86FC)
-val Purple500 = Color(0xFF6200EE)
-val Purple700 = Color(0xFF3700B3)
-val Teal200 = Color(0xFF03DAC5)
+val White = Color(0xFFFFFFFF)
+val Black = Color(0xFF000000)
+val HalfBlack = Color(0x80000000)
+val LightGray = Color(0xFFF5F3F3)
+val Green = Color(0xFF30A743)
+val DreamHomeBlue = Color(0xFF184C80)
+val DreamHomeGray = Color(0xFF909090)
+

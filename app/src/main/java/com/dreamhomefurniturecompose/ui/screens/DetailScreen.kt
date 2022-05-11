@@ -20,6 +20,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.rememberImagePainter
 import com.dreamhomefurniturecompose.ui.components.BackButtonIcon
 import com.dreamhomefurniturecompose.ui.components.DreamHomeTopBar
+import com.dreamhomefurniturecompose.ui.theme.DreamHomeTheme
 import com.dreamhomefurniturecompose.ui.theme.Montserrat
 import com.dreamhomefurniturecompose.viewmodels.DetailScreenViewModelImpl
 import com.example.dreamhomefurniturecompose.R
@@ -97,10 +98,7 @@ fun FurnitureDetails(
             ) {
                 Text(
                     text = detailScreenData.title,
-                    color = colorResource(id = R.color.white),
-                    fontSize = 18.sp,
-                    fontWeight = FontWeight.Medium,
-                    fontFamily = Montserrat,
+                    style = DreamHomeTheme.typography.screenHeader,
                     modifier = Modifier.padding(
                         start = 5.dp,
                         top = 10.dp,
@@ -117,18 +115,13 @@ fun FurnitureDetails(
 
                 Text(
                     text = detailScreenData.vendorTitle,
-                    color = colorResource(id = R.color.white),
-                    fontSize = 14.sp,
-                    fontWeight = FontWeight.Medium,
-                    fontFamily = Montserrat,
+                    style = DreamHomeTheme.typography.screenSubHeader1,
                     modifier = Modifier.padding(top = 5.dp)
                 )
 
                 Text(
                     text = detailScreenData.collection,
-                    color = colorResource(id = R.color.white),
-                    fontSize = 14.sp,
-                    fontFamily = Montserrat,
+                    style = DreamHomeTheme.typography.screenSubHeader2,
                     modifier = Modifier.padding(bottom = 5.dp)
                 )
             }
@@ -195,9 +188,7 @@ fun FurnitureDetails(
                 ) {
                     Text(
                         text = stringResource(R.string.add_to_cart_button),
-                        fontSize = 14.sp,
-                        fontFamily = Montserrat,
-                        color = colorResource(id = R.color.white)
+                        style = DreamHomeTheme.typography.button
                     )
                 }
             }
@@ -215,11 +206,7 @@ fun FurnitureDetails(
             ) {
                 Text(
                     text = stringResource(R.string.overview_title),
-                    fontSize = 16.sp,
-                    fontWeight = FontWeight.SemiBold,
-                    fontFamily = Montserrat,
-                    color = colorResource(id = R.color.black),
-                    textAlign = TextAlign.Left,
+                    style = DreamHomeTheme.typography.bodyHeader1,
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(bottom = 8.dp, top = 16.dp)
@@ -227,9 +214,7 @@ fun FurnitureDetails(
 
                 Text(
                     text = detailScreenData.overview,
-                    fontSize = 14.sp,
-                    fontFamily = Montserrat,
-                    color = colorResource(id = R.color.black),
+                    style = DreamHomeTheme.typography.body1,
                     modifier = Modifier.fillMaxWidth()
                 )
             }
@@ -248,11 +233,7 @@ fun FurnitureDetails(
                 if (detailScreenData.features.isNotEmpty()) {
                     Text(
                         text = stringResource(R.string.features_title),
-                        fontSize = 16.sp,
-                        fontWeight = FontWeight.SemiBold,
-                        fontFamily = Montserrat,
-                        color = colorResource(id = R.color.black),
-                        textAlign = TextAlign.Left,
+                        style = DreamHomeTheme.typography.bodyHeader1,
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(bottom = 8.dp, top = 16.dp)
@@ -276,11 +257,7 @@ fun FurnitureDetails(
                 if (detailScreenData.specs.isNotEmpty()) {
                     Text(
                         text = stringResource(R.string.specs_title),
-                        fontSize = 16.sp,
-                        fontWeight = FontWeight.SemiBold,
-                        fontFamily = Montserrat,
-                        color = colorResource(id = R.color.black),
-                        textAlign = TextAlign.Left,
+                        style = DreamHomeTheme.typography.bodyHeader1,
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(bottom = 8.dp, top = 16.dp)
@@ -311,18 +288,18 @@ fun FeatureRow(
         verticalAlignment = Alignment.Top,
         modifier = Modifier.wrapContentSize()
     ) {
+        /**
+         * Bullet and double tab. Is separate from feature text because if the feature takes multiple lines
+         * then line 2+ are also indented.
+         */
         Text(
             text = "\u2022\t\t",
-            fontSize = 14.sp,
-            fontFamily = Montserrat,
-            color = colorResource(id = R.color.black)
+            style = DreamHomeTheme.typography.body1,
         )
 
         Text(
             text = feature,
-            fontSize = 14.sp,
-            fontFamily = Montserrat,
-            color = colorResource(id = R.color.black)
+            style = DreamHomeTheme.typography.body1,
         )
     }
 }
@@ -341,19 +318,13 @@ fun SpecificationRow(
     ) {
         Text(
             text = stringResource(specs.categoryResId),
-            fontSize = 12.sp,
-            fontWeight = FontWeight.SemiBold,
-            fontFamily = Montserrat,
-            color = colorResource(id = R.color.black),
-            textAlign = TextAlign.Left,
+            style = DreamHomeTheme.typography.bodyHeader2,
             modifier = Modifier.weight(1f)
         )
+
         Text(
             text = specs.specValue,
-            fontSize = 12.sp,
-            fontFamily = Montserrat,
-            color = colorResource(id = R.color.black),
-            textAlign = TextAlign.Left,
+            style = DreamHomeTheme.typography.body2,
             modifier = Modifier.weight(1f)
         )
     }

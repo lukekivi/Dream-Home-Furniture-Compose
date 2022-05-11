@@ -13,11 +13,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.rememberImagePainter
+import com.dreamhomefurniturecompose.ui.theme.DreamHomeTheme
 import com.dreamhomefurniturecompose.ui.theme.Montserrat
 import com.example.dreamhomefurniturecompose.R
 
@@ -64,26 +64,18 @@ fun FurnitureCard(
             Column {
                 Text(
                     text = data.title,
-                    fontSize = 16.sp,
-                    fontWeight = FontWeight.Medium,
-                    fontFamily = Montserrat,
-                    color = colorResource(id = R.color.dream_home_blue),
+                    style = DreamHomeTheme.typography.cardHeader,
                     modifier = Modifier.padding(bottom = 5.dp)
                 )
 
                 Text(
                     text = data.vendorTitle,
-                    fontSize = 12.sp,
-                    fontWeight = FontWeight.Medium,
-                    fontFamily = Montserrat,
-                    color = colorResource(id = R.color.dream_home_gray)
+                    style = DreamHomeTheme.typography.cardSubHeader1,
                 )
                 
                 Text(
                     text = data.collection,
-                    fontSize = 12.sp,
-                    fontFamily = Montserrat,
-                    color = colorResource(id = R.color.dream_home_gray)
+                    style = DreamHomeTheme.typography.cardSubHeader2,
                 )
             }
 
@@ -112,9 +104,7 @@ fun FurnitureCard(
             ) {
                 Text(
                     text = stringResource(R.string.furniture_card_compare_button),
-                    fontSize = 14.sp,
-                    fontFamily = Montserrat,
-                    color = colorResource(id = R.color.white)
+                    style = DreamHomeTheme.typography.button
                 )
             }
         }

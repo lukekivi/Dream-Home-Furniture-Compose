@@ -9,6 +9,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.dreamhomefurniturecompose.ui.screens.DetailScreen
 import com.dreamhomefurniturecompose.ui.screens.MainScreen
+import com.dreamhomefurniturecompose.ui.theme.DreamHomeTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 sealed class Destinations(val route: String) {
@@ -35,7 +36,9 @@ class MainActivity : ComponentActivity() {
          * set the root composable
          */
         setContent {
-            ScreenDispatcher()
+            DreamHomeTheme {
+                ScreenDispatcher()
+            }
         }
     }
 }
