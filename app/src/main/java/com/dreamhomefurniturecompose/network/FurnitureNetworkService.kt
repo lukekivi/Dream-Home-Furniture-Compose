@@ -40,7 +40,7 @@ private val MccadeCouch = FurnitureData(
     type = "Sectionals",
     media = listOf(
         MediaData(
-            url = "https://ashleyfurniture.scene7.com/is/image/AshleyFurniture/10104-88-77-94-T327?AFHS-PDP-Main",
+            url = "https://cdn.shopify.com/s/files/1/0487/9319/0566/products/10104-88-77-94-T327_1200x864.jpg?v=1626800880",
             width = 175,
             length = 200
         )
