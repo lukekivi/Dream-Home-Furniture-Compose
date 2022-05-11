@@ -3,10 +3,7 @@ package com.dreamhomefurniturecompose.ui.screens
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Button
-import androidx.compose.material.ButtonDefaults
-import androidx.compose.material.Divider
-import androidx.compose.material.Text
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -21,10 +18,13 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.rememberImagePainter
+import com.dreamhomefurniturecompose.ui.components.BackButtonIcon
+import com.dreamhomefurniturecompose.ui.components.DreamHomeTopBar
 import com.dreamhomefurniturecompose.ui.theme.Montserrat
 import com.dreamhomefurniturecompose.viewmodels.DetailScreenViewModelImpl
 import com.example.dreamhomefurniturecompose.R
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DetailScreen(
     vm: DetailScreenViewModelImpl = hiltViewModel(),
@@ -32,20 +32,29 @@ fun DetailScreen(
 ) {
     val detailScreenContent by vm.detailScreenContentFlow.collectAsState(initial = DefaultDetailScreenContent)
 
-    if (detailScreenContent.isLoading) {
-        /**
-         * Handle Loading
-         */
-    } else {
-        detailScreenContent.detailScreenState.let { detailScreenState ->
-            when (detailScreenState) {
-                is DetailScreenState.Success -> {
-                    FurnitureDetails(detailScreenData = detailScreenState.detailScreenData)
-                }
-                else -> {
-                    /**
-                     * Handle other states
-                     */
+    Scaffold(
+        topBar = {
+            DreamHomeTopBar { BackButtonIcon { onNavClick() } }
+        }
+    ) {
+        if (detailScreenContent.isLoading) {
+            /**
+             * Handle Loading
+             */
+        } else {
+            detailScreenContent.detailScreenState.let { detailScreenState ->
+                when (detailScreenState) {
+                    is DetailScreenState.Success -> {
+                        FurnitureDetails(
+                            detailScreenData = detailScreenState.detailScreenData,
+                            padding = it
+                        )
+                    }
+                    else -> {
+                        /**
+                         * Handle other states
+                         */
+                    }
                 }
             }
         }
@@ -55,13 +64,15 @@ fun DetailScreen(
 
 @Composable
 fun FurnitureDetails(
-    detailScreenData: DetailScreenData
+    detailScreenData: DetailScreenData,
+    padding: PaddingValues
 ) {
     Column(
         verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
             .fillMaxSize()
+            .padding(padding)
             .padding(start = 8.dp, end = 8.dp)
             .verticalScroll(state = rememberScrollState())
     ) {
@@ -180,7 +191,7 @@ fun FurnitureDetails(
 
                 Button(
                     onClick = { /*TODO*/ },
-                    colors = ButtonDefaults.buttonColors(backgroundColor = colorResource(id = R.color.dream_home_blue))
+                    colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.dream_home_blue))
                 ) {
                     Text(
                         text = stringResource(R.string.add_to_cart_button),

@@ -7,6 +7,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -14,11 +16,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.dreamhomefurniturecompose.ui.components.DreamHomeTopBar
 import com.dreamhomefurniturecompose.ui.components.FurnitureCard
 import com.dreamhomefurniturecompose.ui.components.FurnitureCardData
 import com.dreamhomefurniturecompose.viewmodels.FilterOptions
 import com.dreamhomefurniturecompose.viewmodels.MainScreenViewModelImpl
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MainScreen(
     vm: MainScreenViewModelImpl = hiltViewModel(),  // allow Hilt to provide MainScreen with a viewModel
@@ -26,28 +30,34 @@ fun MainScreen(
 ) {
     val mainScreenContent: MainScreenContent by vm.mainScreenContentFlow.collectAsState(initial = DefaultMainScreenContent)
 
-    Column(
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Top,
-        modifier = Modifier.fillMaxSize()
+    Scaffold(
+        topBar = { DreamHomeTopBar() }
     ) {
-        when (val furnitureDataState = mainScreenContent.furnitureDataState) {
-            is FurnitureDataState.Success -> {
-                MainScreenFurnitureList(
-                    furnitureCardDataList = furnitureDataState.furnitureCardDataList,
-                    onCompare = {
-                        Log.d(
-                            "MainScreen",
-                            "${furnitureDataState.furnitureCardDataList[it].title} was clicked!"
-                        )
-                    },
-                    onClick = onNavClick
-                )
-            }
-            else -> {
-                /**
-                 * do something with other states
-                 */
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Top,
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(it)
+        ) {
+            when (val furnitureDataState = mainScreenContent.furnitureDataState) {
+                is FurnitureDataState.Success -> {
+                    MainScreenFurnitureList(
+                        furnitureCardDataList = furnitureDataState.furnitureCardDataList,
+                        onCompare = {
+                            Log.d(
+                                "MainScreen",
+                                "${furnitureDataState.furnitureCardDataList[it].title} was clicked!"
+                            )
+                        },
+                        onClick = onNavClick
+                    )
+                }
+                else -> {
+                    /**
+                     * do something with other states
+                     */
+                }
             }
         }
     }
