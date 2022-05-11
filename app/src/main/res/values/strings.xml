@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">DreamHomeFurnitureCompose</string>
 
+    <!-- filter items -->
     <string name="filter_item_beds">Beds</string>
     <string name="filter_item_bedding_accessories">Bedding Accessories</string>
     <string name="filter_item_benches">Benches</string>
@@ -10,6 +11,31 @@
     <string name="filter_item_nightstands">Nightstands</string>
     <string name="filter_item_vanity_tables">Vanity Tables</string>
 
+    <!-- furniture card -->
     <string name="furniture_card_price_title">Our Price</string>
     <string name="furniture_card_compare_button">COMPARE</string>
+
+    <!-- detail screen -->
+    <string name="add_to_cart_button">Add to Cart</string>
+    <string name="overview_title">Overview</string>
+    <string name="features_title">Features</string>
+
+    <!-- specification categories -->
+    <string name="brand_name">Brand Name</string>
+    <string name="color">Color</string>
+    <string name="consumer_assembly">Consumer Assembly</string>
+    <string name="consumer_description">Consumer Description</string>
+    <string name="friendly_description">Friendly Description</string>
+    <string name="item_code">Item Code</string>
+    <string name="item_type">Item Type</string>
+    <string name="item_weight_lbs">Item Weight (lbs)</string>
+    <string name="manufacturer_warranty_days">Manufacturer Warranty Days</string>
+    <string name="marxent_pid_number">Marxent PID Number</string>
+    <string name="retail_type">Retail Type</string>
+    <string name="series_id">Series ID</string>
+    <string name="sku">Sku</string>
+    <string name="unit_depth_in">Unit Depth (in)</string>
+    <string name="unit_height_in">Unit Height (in)</string>
+    <string name="unit_width_in">Unit Width (in)</string>
+    <string name="specs_title">Specs</string>
 </resources>
