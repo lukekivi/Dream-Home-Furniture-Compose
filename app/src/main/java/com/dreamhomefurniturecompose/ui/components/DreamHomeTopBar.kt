@@ -14,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import com.dreamhomefurniturecompose.ui.theme.DreamHomeTheme
 import com.example.dreamhomefurniturecompose.R
 
 @Composable
@@ -32,7 +33,7 @@ fun DreamHomeTopBar(
             horizontalArrangement = Arrangement.Center,
             modifier = Modifier
                 .fillMaxSize()
-                .background(color = colorResource(id = R.color.white))
+                .background(color = DreamHomeTheme.colors.topAppBarBackground)
                 .padding(top = 4.dp, bottom = 4.dp)
         ) {
             Column(modifier = Modifier.weight(1f)) {
@@ -61,7 +62,8 @@ fun BackButtonIcon(
     ) {
         Icon(
             imageVector = Icons.Filled.ArrowBack,
-            contentDescription = null
+            contentDescription = null,
+            tint = DreamHomeTheme.colors.topAppBarContent
         )
     }
 }

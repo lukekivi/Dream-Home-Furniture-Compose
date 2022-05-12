@@ -17,8 +17,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.rememberImagePainter
-import com.dreamhomefurniturecompose.ui.theme.DreamHomeTheme
-import com.dreamhomefurniturecompose.ui.theme.Montserrat
+import com.dreamhomefurniturecompose.ui.theme.*
 import com.example.dreamhomefurniturecompose.R
 
 @Composable
@@ -35,7 +34,7 @@ fun FurnitureCard(
             .height(210.dp)
             .border(
                 width = .5.dp,
-                color = colorResource(id = R.color.half_black),
+                color = DreamHomeTheme.colors.onBackgroundAccent,
                 shape = RoundedCornerShape(8.dp)
             )
     ){
@@ -87,20 +86,20 @@ fun FurnitureCard(
                     text = stringResource(R.string.furniture_card_price_title),
                     fontSize = 14.sp,
                     fontFamily = Montserrat,
-                    color = colorResource(id = R.color.black)
+                    color = DreamHomeTheme.colors.onBackground
                 )
 
                 Text(
                     text = data.price,
                     fontSize = 14.sp,
                     fontFamily = Montserrat,
-                    color = colorResource(id = R.color.green)
+                    color = Green
                 )
             }
 
             Button(
                 onClick = { setCompare() },
-                colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.dream_home_blue))
+                colors = ButtonDefaults.buttonColors(containerColor = DreamHomeTheme.colors.buttonBackground)
             ) {
                 Text(
                     text = stringResource(R.string.furniture_card_compare_button),

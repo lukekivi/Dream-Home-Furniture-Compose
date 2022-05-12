@@ -1,33 +1,13 @@
 package com.dreamhomefurniturecompose.ui.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.material.darkColors
-import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.text.TextStyle
-
-private val DarkColorPalette = darkColors(
-    primary = White,
-    primaryVariant = White,
-    secondary = White
-)
-
-private val LightColorPalette = lightColors(
-    primary = White,
-    primaryVariant = White,
-    secondary = White
-
-    /* Other default colors to override
-    background = Color.White,
-    surface = Color.White,
-    onPrimary = Color.White,
-    onSecondary = Color.Black,
-    onBackground = Color.Black,
-    onSurface = Color.Black,
-    */
-)
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.sp
 
 val LocalDreamHomeTypography = staticCompositionLocalOf {
     AppTypography(
@@ -45,21 +25,103 @@ val LocalDreamHomeTypography = staticCompositionLocalOf {
     )
 }
 
+val LocalDreamHomeColors = staticCompositionLocalOf {
+    DreamHomeLightColors
+}
+
 @Composable
 fun DreamHomeTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit
 ) {
     val colors = if (darkTheme) {
-        DarkColorPalette
+        DreamHomeLightColors
     } else {
-        LightColorPalette
+        DreamHomeLightColors // todo make dark theme
     }
 
-    val typography = DreamHomeTypography
-    
+    val typography = AppTypography(
+        screenHeader = TextStyle(
+            color = colors.onHeaderBackground,
+            fontSize = 18.sp,
+            fontWeight = FontWeight.Medium,
+            fontFamily = Montserrat,
+            textAlign = TextAlign.Left
+        ),
+        screenSubHeader1 = TextStyle(
+            color = colors.onHeaderBackground,
+            fontSize = 14.sp,
+            fontWeight = FontWeight.Medium,
+            fontFamily = Montserrat,
+            textAlign = TextAlign.Left
+        ),
+        screenSubHeader2 = TextStyle(
+            color = colors.onHeaderBackground,
+            fontSize = 14.sp,
+            fontWeight = FontWeight.Normal,
+            fontFamily = Montserrat,
+            textAlign = TextAlign.Left
+        ),
+        cardHeader = TextStyle(
+            color = colors.cardContent,
+            fontSize = 16.sp,
+            fontWeight = FontWeight.Medium,
+            fontFamily = Montserrat,
+            textAlign = TextAlign.Left
+        ),
+        cardSubHeader1 = TextStyle(
+            color = colors.cardContentSecondary,
+            fontSize = 12.sp,
+            fontWeight = FontWeight.Medium,
+            fontFamily = Montserrat,
+            textAlign = TextAlign.Left
+        ),
+        cardSubHeader2 = TextStyle(
+            color = colors.cardContentSecondary,
+            fontSize = 12.sp,
+            fontWeight = FontWeight.Normal,
+            fontFamily = Montserrat,
+            textAlign = TextAlign.Left
+        ),
+        bodyHeader1 = TextStyle(
+            color = colors.onBackground,
+            fontSize = 16.sp,
+            fontWeight = FontWeight.SemiBold,
+            fontFamily = Montserrat,
+            textAlign = TextAlign.Left
+        ),
+        bodyHeader2 = TextStyle(
+            color = colors.onBackground,
+            fontSize = 12.sp,
+            fontWeight = FontWeight.SemiBold,
+            fontFamily = Montserrat,
+            textAlign = TextAlign.Left
+        ),
+        body1 = TextStyle(
+            color = colors.onBackground,
+            fontSize = 14.sp,
+            fontWeight = FontWeight.Normal,
+            fontFamily = Montserrat,
+            textAlign = TextAlign.Left
+        ),
+        body2 = TextStyle(
+            color = colors.onBackground,
+            fontSize = 12.sp,
+            fontWeight = FontWeight.Normal,
+            fontFamily = Montserrat,
+            textAlign = TextAlign.Left
+        ),
+        button = TextStyle(
+            color = colors.buttonContent,
+            fontSize = 14.sp,
+            fontWeight = FontWeight.Normal,
+            textAlign = TextAlign.Left
+        )
+    )
+
     CompositionLocalProvider(
-        LocalDreamHomeTypography provides DreamHomeTypography
+        LocalDreamHomeTypography provides typography,
+        LocalDreamHomeColors provides colors
     ) {
         content()
     }
@@ -69,4 +131,7 @@ object DreamHomeTheme {
     val typography: AppTypography
         @Composable
         get() = LocalDreamHomeTypography.current
+    val colors: AppColors
+        @Composable
+        get() = LocalDreamHomeColors.current
 }

@@ -21,6 +21,7 @@ import coil.compose.rememberImagePainter
 import com.dreamhomefurniturecompose.ui.components.BackButtonIcon
 import com.dreamhomefurniturecompose.ui.components.DreamHomeTopBar
 import com.dreamhomefurniturecompose.ui.theme.DreamHomeTheme
+import com.dreamhomefurniturecompose.ui.theme.Green
 import com.dreamhomefurniturecompose.ui.theme.Montserrat
 import com.dreamhomefurniturecompose.viewmodels.DetailScreenViewModelImpl
 import com.example.dreamhomefurniturecompose.R
@@ -92,7 +93,7 @@ fun FurnitureDetails(
                     .wrapContentHeight()
                     .fillMaxWidth()
                     .background(
-                        color = colorResource(id = R.color.dream_home_blue),
+                        color = DreamHomeTheme.colors.headerBackground,
                         shape = RoundedCornerShape(bottomStart = 5.dp, bottomEnd = 5.dp)
                     )
             ) {
@@ -108,7 +109,7 @@ fun FurnitureDetails(
                 )
 
                 Divider(
-                    color = colorResource(id = R.color.white),
+                    color = DreamHomeTheme.colors.onHeaderBackground,
                     thickness = 1.dp,
                     modifier = Modifier.fillMaxWidth(.9f)
                 )
@@ -150,10 +151,10 @@ fun FurnitureDetails(
             horizontalArrangement = Arrangement.Center,
             modifier = Modifier
                 .wrapContentSize()
-                .background(color = colorResource(id = R.color.light_gray))
+                .background(color = DreamHomeTheme.colors.backgroundSecondary)
                 .border(
                     width = 0.25.dp,
-                    color = colorResource(id = R.color.half_black),
+                    color = DreamHomeTheme.colors.onBackgroundAccent,
                     shape = RoundedCornerShape(5.dp)
                 )
         ) {
@@ -171,20 +172,20 @@ fun FurnitureDetails(
                         text = stringResource(id = R.string.furniture_card_price_title),
                         fontSize = 18.sp,
                         fontFamily = Montserrat,
-                        color = colorResource(id = R.color.black)
+                        color = DreamHomeTheme.colors.onBackground
                     )
 
                     Text(
                         text = detailScreenData.price,
                         fontSize = 18.sp,
                         fontFamily = Montserrat,
-                        color = colorResource(id = R.color.green)
+                        color = Green
                     )
                 }
 
                 Button(
                     onClick = { /*TODO*/ },
-                    colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.dream_home_blue))
+                    colors = ButtonDefaults.buttonColors(containerColor = DreamHomeTheme.colors.buttonBackground)
                 ) {
                     Text(
                         text = stringResource(R.string.add_to_cart_button),
@@ -267,7 +268,7 @@ fun FurnitureDetails(
                         SpecificationRow(
                             specs = spec,
                             modifier = Modifier
-                                .background(color = colorResource(id = if (index % 2 == 0) R.color.white else R.color.light_gray))
+                                .background(color = if (index % 2 == 0) DreamHomeTheme.colors.background else DreamHomeTheme.colors.backgroundSecondary)
                                 .padding(bottom = 4.dp, top = 4.dp, start = 8.dp, end = 8.dp)
                         )
                     }
