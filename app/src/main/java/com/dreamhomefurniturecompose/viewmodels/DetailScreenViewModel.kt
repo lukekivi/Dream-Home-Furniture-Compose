@@ -50,8 +50,7 @@ class DetailScreenViewModelImpl @Inject constructor(
                     furnitureResponse.simpleFurnitureDataList.firstOrNull { it.title == articleTitle }
                         ?.let { DetailScreenState.Success(it.toDetailScreenData()) }
                         ?: DetailScreenState.NoMatch
-                }
-                    ?: DetailScreenState.Error("Failed to retreive saved State")
+                } ?: DetailScreenState.Error("Failed to retrieve savedState")
             }
             is FurnitureResponse.Error -> {
                 DetailScreenState.Error(furnitureResponse.message)

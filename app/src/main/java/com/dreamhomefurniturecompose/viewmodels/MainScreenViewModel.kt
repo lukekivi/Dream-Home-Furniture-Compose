@@ -1,11 +1,13 @@
 package com.dreamhomefurniturecompose.viewmodels
 
+import android.util.Log
 import androidx.annotation.StringRes
 import androidx.lifecycle.ViewModel
 import com.dreamhomefurniturecompose.data.FurnitureRepo
 import com.dreamhomefurniturecompose.data.FurnitureResponse
 import com.dreamhomefurniturecompose.network.FurnitureData
 import com.dreamhomefurniturecompose.ui.components.FurnitureCardData
+import com.dreamhomefurniturecompose.ui.screens.CompareState
 import com.dreamhomefurniturecompose.ui.screens.FilterItem
 import com.dreamhomefurniturecompose.ui.screens.FurnitureDataState
 import com.dreamhomefurniturecompose.ui.screens.MainScreenContent
@@ -21,6 +23,7 @@ interface MainScreenViewModel {
     val mainScreenContentFlow: Flow<MainScreenContent>
     fun userRefresh()
     fun userUpdateFilter(filterOption: FilterOptions)
+    fun userSetCompare(title: String)
 }
 
 @HiltViewModel
@@ -39,9 +42,11 @@ class MainScreenViewModelImpl @Inject constructor(
 
     private val isLoadingFlow = MutableStateFlow(false)
 
+    private val compareStateFlow = MutableStateFlow<CompareState>(CompareState.Inactive)
+
     override val mainScreenContentFlow: Flow<MainScreenContent> = combine(
-        furnitureResponseFlow, isLoadingFlow, filterItemListFlow
-    ) { furnitureResponse, isLoading, filterItemList ->
+        furnitureResponseFlow, isLoadingFlow, filterItemListFlow, compareStateFlow
+    ) { furnitureResponse, isLoading, filterItemList, compareState ->
         val furnitureDataState = when(furnitureResponse) {
             is FurnitureResponse.Uninitialized -> {
                 furnitureRepo.refreshFurnitureData()
@@ -75,7 +80,8 @@ class MainScreenViewModelImpl @Inject constructor(
         MainScreenContent(
             isLoading = isLoading,
             filterItemList = filterItemList,
-            furnitureDataState = furnitureDataState
+            furnitureDataState = furnitureDataState,
+            compareState = compareState
         )
     }
 
@@ -99,6 +105,16 @@ class MainScreenViewModelImpl @Inject constructor(
         filterItemListFlow.value = newFilterList.toList()
     }
 
+    override fun userSetCompare(title: String) {
+        when (compareStateFlow.value) {
+            CompareState.Inactive -> {
+               compareStateFlow.value = CompareState.Active(title)
+            }
+            is CompareState.Active -> {
+               Log.e("MainScreenViewModel", "userSetCompare() should not be invoked while there is an active CompareState.")
+            }
+        }
+    }
 
     private fun FurnitureData.toFurnitureCardData() = FurnitureCardData(
         title = this.title,
