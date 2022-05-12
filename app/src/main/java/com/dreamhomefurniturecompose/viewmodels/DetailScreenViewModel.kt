@@ -7,7 +7,10 @@ import com.dreamhomefurniturecompose.data.FurnitureRepo
 import com.dreamhomefurniturecompose.data.FurnitureResponse
 import com.dreamhomefurniturecompose.network.FurnitureData
 import com.dreamhomefurniturecompose.network.ProductSpecifications
-import com.dreamhomefurniturecompose.ui.screens.*
+import com.dreamhomefurniturecompose.ui.screens.DetailScreenContent
+import com.dreamhomefurniturecompose.ui.screens.DetailScreenData
+import com.dreamhomefurniturecompose.ui.screens.DetailScreenSpecs
+import com.dreamhomefurniturecompose.ui.screens.DetailScreenState
 import com.example.dreamhomefurniturecompose.R
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow

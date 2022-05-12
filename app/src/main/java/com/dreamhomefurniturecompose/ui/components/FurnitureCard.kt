@@ -11,13 +11,14 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.rememberImagePainter
-import com.dreamhomefurniturecompose.ui.theme.*
+import com.dreamhomefurniturecompose.ui.theme.DreamHomeTheme
+import com.dreamhomefurniturecompose.ui.theme.Green
+import com.dreamhomefurniturecompose.ui.theme.Montserrat
 import com.example.dreamhomefurniturecompose.R
 
 @Composable

@@ -2,7 +2,6 @@ package com.dreamhomefurniturecompose.viewmodels
 
 import androidx.annotation.StringRes
 import androidx.lifecycle.ViewModel
-import com.example.dreamhomefurniturecompose.R
 import com.dreamhomefurniturecompose.data.FurnitureRepo
 import com.dreamhomefurniturecompose.data.FurnitureResponse
 import com.dreamhomefurniturecompose.network.FurnitureData
@@ -10,6 +9,7 @@ import com.dreamhomefurniturecompose.ui.components.FurnitureCardData
 import com.dreamhomefurniturecompose.ui.screens.FilterItem
 import com.dreamhomefurniturecompose.ui.screens.FurnitureDataState
 import com.dreamhomefurniturecompose.ui.screens.MainScreenContent
+import com.example.dreamhomefurniturecompose.R
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
