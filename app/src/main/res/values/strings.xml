@@ -38,4 +38,11 @@
     <string name="unit_depth_in">Unit Depth (in)</string>
     <string name="unit_height_in">Unit Height (in)</string>
     <string name="unit_width_in">Unit Width (in)</string>
+    <string name="comparing_title">Comparing</string>
+    <string name="product_title">Product</string>
+    <string name="details_title">Details</string>
+    <string name="details_product_name">Product Name</string>
+    <string name="details_brand_name">Brand Name</string>
+    <string name="details_collection">Collection</string>
+    <string name="details_overview">Overview</string>
 </resources>
